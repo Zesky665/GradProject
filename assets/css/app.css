@@ -1,0 +1,20 @@
+/* This file is for your main application css. */
+#message-list {
+  border: 1px solid #777;
+  height: 400px;
+  padding: 10px;
+  overflow: auto;
+  margin-bottom: 50px;
+}
+.message {
+  float: left;
+  word-wrap: break-word;
+  width: 100%;
+  line-height: 30px;
+  padding-bottom: 10px;
+  display: inline;
+  /*height: 10%;*/
+}
+.edit_button {
+  float: right;
+}
