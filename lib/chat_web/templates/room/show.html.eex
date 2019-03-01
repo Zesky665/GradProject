@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-3">
+    <h3><%= @room.room_name %>
+      
+     <%= if Chat.Auth.Authorizer.can_manage?(@current_user, @room) do %>
+      <a class="btn btn-primary" href=" /<%=@room.id%>/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+     <% end %>
+    </h3>
+    <ul class="list-group">
+      <%= for corner <- @room.corners do %>
+        <li class="list-group-item">
+          <%= link "#{corner.corner_name}", to: "/#{@room.id}/#{corner.id}" %>
+          <%= if !is_nil(corner.corner_name) && corner.corner_name != "" do %>
+            <div class="float-right text-info" data-toggle="tooltip" data-placement="right" data-html="true" title="<%= corner.corner_name %>">
+              <i class="fas fa-info-circle"></i>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+      <%= if Chat.Auth.Authorizer.can_manage?(@current_user, @room) do %>
+          <a class="btn btn-success" href=" /<%=@room.id%>/new"><span class="glyphicon glyphicon-plus"></span></a>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col">
+    <section class="jumbotron text-center">
+      <h1 class="jumbotron-heading mb-5">Welcome to Ex_Chat</h1>
+      <p class="lead text-muted">
+        Choose the corner on the left to join
+      </p>
+      <p class="lead text-muted">
+        or <a href=" /<%=@room.id%>/new" class="btn btn-success">Create</a> a new one
+      </p>
+    </section>
+  </div>
+</div>
